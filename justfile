@@ -14,6 +14,9 @@ config:
 unset-config:
   stow -D -t {{home_dir()}}/.config/nix .
 
+flake-check:
+  nix flake check
+
 profile-install:
   nix profile install .
 
