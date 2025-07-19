@@ -42,6 +42,9 @@
             just
             mkcert
             fluxcd
+            fzf
+            fd
+            ripgrep
             lua51Packages.luarocks
             nodejs
           ];
