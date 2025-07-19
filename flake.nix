@@ -3,12 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, nixpkgs }:
       let
+      system = "x86_64-linux";
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
@@ -25,10 +24,9 @@
             })
           ];
         };
-      in
-      {
+      in {
         # Single package bundle for nix profile install
-        packages.default = pkgs.buildEnv {
+        packages.${system}.default = pkgs.buildEnv {
           name = "my-dev-packages";
           paths = with pkgs; [
             go
@@ -50,5 +48,5 @@
           ];
           pathsToLink = [ "/bin" "/share" ];
         };
-      });
+      };
 }
