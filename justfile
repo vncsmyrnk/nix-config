@@ -8,33 +8,24 @@ install-deps:
 install: install-deps config
 
 config:
-  mkdir -p {{home_dir()}}/.config/nix {{home_dir()}}/.config/nixpkgs
-  stow -t {{home_dir()}}/.config/nix nix
-  stow -t {{home_dir()}}/.config/nixpkgs nixpkgs
+  mkdir -p {{home_dir()}}/.config/nix
+  stow -t {{home_dir()}}/.config/nix .
 
 unset-config:
-  stow -D -t {{home_dir()}}/.config/nix nix
-  stow -D -t {{home_dir()}}/.config/nixpkgs nixpkgs
+  stow -D -t {{home_dir()}}/.config/nix .
 
-sync-packages:
-  nix-env -if ~/.config/nixpkgs/packages.nix
+install-packages:
+  nix profile install .
 
-update:
-  nix-channel --update
-  nix-env -u
+update-packages:
+  nix flake update
+  nix profile upgrade .
 
-update-dry-run:
-  nix-channel --update
-  nix-env -u --dry-run
-
-update-rollback:
-  nix-env --rollback
-
-clean:
-  nix-collect-garbage -d
+rollback:
+  nix profile rollback
 
 list-generations:
-  nix-env --list-generations
+  nix profile history
 
 delete-old-generations:
-  nix-env --delete-generations old
+  nix profile wipe-history
