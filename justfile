@@ -14,18 +14,21 @@ config:
 unset-config:
   stow -D -t {{home_dir()}}/.config/nix .
 
-install-packages:
+profile-install:
   nix profile install .
 
-update-packages:
-  nix flake update
-  nix profile upgrade .
+profile-list:
+  nix profile list
 
-rollback:
+profile-upgrade:
+  nix flake update
+  nix profile upgrade --all
+
+profile-rollback:
   nix profile rollback
 
-list-generations:
+profile-history:
   nix profile history
 
-delete-old-generations:
+profile-wipe:
   nix profile wipe-history
