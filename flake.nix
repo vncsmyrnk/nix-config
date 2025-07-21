@@ -39,6 +39,7 @@
           htmlq
           rclone
           just
+          jq
           mkcert
           fluxcd
           fzf
