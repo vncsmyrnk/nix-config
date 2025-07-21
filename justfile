@@ -33,5 +33,8 @@ profile-rollback:
 profile-history:
   nix profile history
 
+profile-history-diff:
+  nix profile diff-closures
+
 profile-wipe:
   nix profile wipe-history
