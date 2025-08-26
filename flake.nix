@@ -35,6 +35,7 @@
           lua51Packages.luarocks
           nodejs
           nixpkgs-fmt
+          gemini-cli
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
