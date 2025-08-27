@@ -18,7 +18,7 @@ flake-check:
   nix flake check
 
 profile-install:
-  nix profile install .
+  nix profile install .#default
 
 profile-reinstall:
   nix flake update
