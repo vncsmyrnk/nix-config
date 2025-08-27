@@ -20,6 +20,12 @@ flake-check:
 profile-install:
   nix profile install .
 
+profile-reinstall:
+  nix flake update
+  nix profile remove nix
+  nix-collect-garbage -d
+  nix profile install .#default
+
 profile-list:
   nix profile list
 
