@@ -17,7 +17,6 @@
         paths = with pkgs; [
           go
           tmux
-          neovim
           lazygit
           gh
           watchman
