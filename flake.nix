@@ -1,21 +1,19 @@
 {
   description = "Development environment with custom packages";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
+  inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; };
 
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
+    in {
       # Single package bundle for nix profile install
       packages.${system}.default = pkgs.buildEnv {
         name = "my-dev-packages";
         paths = with pkgs; [
           neovim
+          golangci-lint
           go
           tmux
           lazygit
