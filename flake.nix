@@ -29,7 +29,8 @@
           fd
           ripgrep
           lua51Packages.luarocks
-          nodejs
+          nodejs_24
+          tree-sitter
           nixpkgs-fmt
           gemini-cli
         ];
