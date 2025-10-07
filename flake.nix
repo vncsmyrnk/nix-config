@@ -12,7 +12,6 @@
       packages.${system}.default = pkgs.buildEnv {
         name = "my-dev-packages";
         paths = with pkgs; [
-          neovim
           golangci-lint
           go
           tmux
