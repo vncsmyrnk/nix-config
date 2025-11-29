@@ -44,3 +44,9 @@ profile-history-diff:
 
 profile-wipe:
   nix profile wipe-history
+
+profile-wipe-older-than-20d-dry-run:
+  nix-collect-garbage --delete-older-than 20d --dry-run
+
+profile-wipe-older-than-20d:
+  nix-collect-garbage --delete-older-than 20d
