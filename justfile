@@ -36,6 +36,9 @@ profile-upgrade:
 profile-rollback:
   nix profile rollback
 
+profile-rollback-to version:
+  nix profile rollback --to {{version}}
+
 profile-history:
   nix profile history
 
