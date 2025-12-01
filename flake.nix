@@ -6,7 +6,21 @@
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          (final: prev: {
+            tmux = prev.tmux.overrideAttrs (oldAttrs: rec {
+              version = "3.5a";
+              src = pkgs.fetchurl {
+                url =
+                  "https://github.com/tmux/tmux/releases/download/${version}/tmux-${version}.tar.gz";
+                hash = "sha256-FiFr0IdxcN/MZBVwhbqQE2ELErCCVIx8lULMAQMZiVE=";
+              };
+            });
+          })
+        ];
+      };
     in {
       # Single package bundle for nix profile install
       packages.${system}.default = pkgs.buildEnv {
