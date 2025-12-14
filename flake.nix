@@ -46,6 +46,7 @@
           tree-sitter
           nixpkgs-fmt
           gemini-cli
+          xclip
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
