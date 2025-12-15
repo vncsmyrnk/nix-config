@@ -47,6 +47,7 @@
           nixpkgs-fmt
           gemini-cli
           xclip
+          kubectl
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
