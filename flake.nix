@@ -27,8 +27,6 @@
       packages.${system}.default = pkgs.buildEnv {
         name = "my-dev-packages";
         paths = with pkgs; [
-          golangci-lint
-          go
           tmux
           lazygit
           gh
