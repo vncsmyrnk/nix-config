@@ -50,6 +50,7 @@
           xclip
           kubectl
           ngrok
+          sshfs
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
