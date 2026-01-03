@@ -49,6 +49,7 @@
           kubectl
           ngrok
           sshfs
+          oath-toolkit
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
