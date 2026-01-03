@@ -50,6 +50,7 @@
           ngrok
           sshfs
           oath-toolkit
+          eog
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
