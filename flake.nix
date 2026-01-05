@@ -9,18 +9,6 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [
-          (final: prev: {
-            tmux = prev.tmux.overrideAttrs (oldAttrs: rec {
-              version = "3.5a";
-              src = pkgs.fetchurl {
-                url =
-                  "https://github.com/tmux/tmux/releases/download/${version}/tmux-${version}.tar.gz";
-                hash = "sha256-FiFr0IdxcN/MZBVwhbqQE2ELErCCVIx8lULMAQMZiVE=";
-              };
-            });
-          })
-        ];
       };
     in {
       # Single package bundle for nix profile install
