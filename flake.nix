@@ -39,6 +39,7 @@
           sshfs
           oath-toolkit
           eog
+          stripe-cli
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
