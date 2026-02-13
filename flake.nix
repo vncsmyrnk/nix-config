@@ -40,6 +40,7 @@
           oath-toolkit
           eog
           stripe-cli
+          google-cloud-sdk
         ];
         pathsToLink = [ "/bin" "/share" ];
       };
