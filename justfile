@@ -7,6 +7,7 @@ install-deps:
   #!/usr/bin/env bash
   if [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S nix
+    sudo systemctl enable --now nix-daemon.service
   fi
 
 install: install-deps config
