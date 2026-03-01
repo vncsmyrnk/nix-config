@@ -1,55 +1,19 @@
+os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
+
 default:
   just --list
 
 install-deps:
-  sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
-  nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+  #!/usr/bin/env bash
+  if [ "{{os}}" = "Arch Linux" ]; then
+    sudo pacman -S nix
+  fi
 
-install: install-deps config profile-install
+install: install-deps config
 
 config:
-  mkdir -p {{home_dir()}}/.config/nix
-  stow -t {{home_dir()}}/.config/nix .
+  mkdir -p "{{home_dir()}}/.config/nix"
+  stow -t "{{home_dir()}}/.config/nix" .
 
 unset-config:
-  stow -D -t {{home_dir()}}/.config/nix .
-
-flake-check:
-  nix flake check
-
-profile-install:
-  nix profile install .#default
-
-profile-reinstall:
-  nix flake update
-  nix profile remove nix
-  nix-collect-garbage -d
-  nix profile install .#default
-
-profile-list:
-  nix profile list
-
-profile-upgrade:
-  nix flake update
-  nix profile upgrade --all
-
-profile-rollback:
-  nix profile rollback
-
-profile-rollback-to version:
-  nix profile rollback --to {{version}}
-
-profile-history:
-  nix profile history
-
-profile-history-diff:
-  nix profile diff-closures
-
-profile-wipe:
-  nix profile wipe-history
-
-profile-wipe-older-than-20d-dry-run:
-  nix-collect-garbage --delete-older-than 20d --dry-run
-
-profile-wipe-older-than-20d:
-  nix-collect-garbage --delete-older-than 20d
+  stow -D -t "{{home_dir()}}/.config/nix" .
